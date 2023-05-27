@@ -1,20 +1,31 @@
-<?php
-/* @var $this SiteController */
-
-$this->pageTitle=Yii::app()->name;
-?>
-
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
-
-<p>Congratulations! You have successfully created your Yii application.</p>
-
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
-
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+<div class="row">
+	<div class="my-4">
+		<a href="/site/creatediary">
+			<button type="submit" class="btn btn-primary">Создать блог</button>
+		</a>
+	</div>
+</div>
+<div class="row">
+	<div class="d-flex flex-column justify-content-start dashboard">
+		<?php
+		$this->widget("ext.widgets.dashboardwidget.dashboardwidget", compact("d"));
+		?>
+	</div>
+</div>
+<div class="row mt-4">
+	<nav aria-label="...">
+		<ul class="pagination d-flex justify-content-end pagination-sm">
+			<? for ($i = 1; $i <= $pages; $i++): ?>
+				<? if ($i == $page): ?>
+					<li class="page-item active" aria-current="page">
+						<span class="page-link">
+							<?= $page ?>
+						</span>
+					</li>
+				<? else: ?>
+					<li class="page-item"><a class="page-link" href="/site/index/?page=<?= $i ?>"><?= $i ?></a></li>
+				<? endif; ?>
+			<? endfor; ?>
+		</ul>
+	</nav>
+</div>
