@@ -10,10 +10,12 @@ class SiteController extends Controller
 		return [];
 	}
 
-	/**
-	 * This is the default 'index' action that is invoked
-	 * when an action is not explicitly requested by users.
-	 */
+	public function actionGrid()
+	{
+		$model = new Diaries();
+		$this->render('grid', compact("model"));
+	}
+
 	public function actionIndex()
 	{
 		$page = (int) (Yii::app()->request->getQuery('page') ? Yii::app()->request->getQuery('page') : 1);
